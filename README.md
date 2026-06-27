@@ -92,9 +92,6 @@ CERTIFICATIONS
 • Spanish: Native
 • English: B2 Upper-Intermediate
 
-DESPUES DE SACAR LA INFORMACION NECESARIA LA RUTA Y EL NOMBRE DE LAS IMAGENES SON src/app/assets/nameProject-*.png
-PON TODAS LAS IMAGENES QUE ESTE CON REFERENCIA EL NOMBRE DEL PROYECTO EN LAS CARDS LUEGO DE SER CLICADAS
-PON TAMBIEN LOS LINKS DE LOS PROYECTOS:
 ## Coldtrace Links:
 
 SwaggerUI:https://coldtrace-platform-55771439812.us-central1.run.app/swagger/index.html
@@ -110,7 +107,3 @@ LandingPage:https://mts-opensource.github.io/IntegraVida/
 ## NativoShapi Links:
 
 https://d20a8dmrycj9vg.cloudfront.net/
-
-## 
-
-SOLO LLEGA A ESTA PARTE NO PONGAS NADA CORE WORKFLOW NI CONTACTARME SOLO PON LOS LINKS DE LAS REDES SOCIALES QUE ESTAN EN EL APARTADO DE ARRIBA
