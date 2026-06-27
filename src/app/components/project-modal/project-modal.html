@@ -1,0 +1,79 @@
+<div
+  class="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-backdrop"
+  style="background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px);"
+  (click)="onBackdropClick($event)"
+>
+  <div class="bg-zinc-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-white/10 shadow-2xl">
+    <div class="relative">
+      <div class="aspect-video bg-zinc-800 rounded-t-2xl overflow-hidden relative">
+        <img
+          [src]="project().images[selectedImage]"
+          [alt]="project().title"
+          class="w-full h-full object-cover cursor-pointer"
+          (click)="nextImage()"
+        />
+        @if (project().images.length > 1) {
+          <button
+            (click)="prevImage(); $event.stopPropagation()"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+          >
+            <span class="material-symbols-outlined text-2xl">chevron_left</span>
+          </button>
+          <button
+            (click)="nextImage(); $event.stopPropagation()"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+          >
+            <span class="material-symbols-outlined text-2xl">chevron_right</span>
+          </button>
+        }
+      </div>
+      @if (project().images.length > 1) {
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          @for (img of project().images; track img; let i = $index) {
+            <button
+              (click)="selectImage(i)"
+              class="w-2.5 h-2.5 rounded-full transition-all"
+              [class.bg-white]="i === selectedImage"
+              [class.bg-white/40]="i !== selectedImage"
+            ></button>
+          }
+        </div>
+      }
+      <button
+        (click)="close.emit()"
+        class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+      >
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+    <div class="p-8">
+      <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+        <div>
+          <h3 class="text-3xl font-black tracking-tighter text-white">{{ project().title }}</h3>
+          <p class="text-navy-blue text-sm font-medium mt-1">{{ project().role }} — {{ project().date }}</p>
+        </div>
+      </div>
+      <p class="text-zinc-400 leading-relaxed mb-8">{{ project().description }}</p>
+      <div class="flex flex-wrap gap-2 mb-8">
+        @for (tech of project().technologies; track tech) {
+          <span class="px-4 py-1.5 bg-zinc-800 text-zinc-300 rounded-full text-xs font-bold border border-navy">{{ tech }}</span>
+        }
+      </div>
+      @if (project().links.length) {
+        <div class="flex flex-wrap gap-3">
+          @for (link of project().links; track link.label) {
+            <a
+              [href]="link.url"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-lg font-bold tracking-tighter uppercase text-xs hover:bg-zinc-200 transition-colors active:scale-95"
+            >
+              {{ link.label }}
+              <span class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>
